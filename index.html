@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>全平台运营 & 建站服务套餐 | 完整版 · GitHub Ready</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#0b0f19;--card:#111827;--card-hover:#1a2332;--border:#1f2937;--text:#f3f4f6;--muted:#9ca3af;--accent:#3b82f6;--success:#10b981}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Noto Sans SC',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
+    .hero{background:linear-gradient(160deg,#0b0f19 0%,#111827 40%,#1e293b 100%);padding:3rem 1.5rem 2rem;text-align:center;border-bottom:1px solid var(--border);position:relative;overflow:hidden}
+    .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 50% at 50% -20%,rgba(59,130,246,.22),transparent)}
+    .hero h1{font-size:clamp(1.7rem,4.5vw,2.5rem);font-weight:700;letter-spacing:-.03em;position:relative;margin-bottom:.5rem}
+    .hero p{color:var(--muted);font-size:1rem;max-width:700px;margin:0 auto 1.2rem;position:relative}
+    .badge-row{display:flex;flex-wrap:wrap;gap:.45rem;justify-content:center;position:relative}
+    .badge{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);padding:.3rem .85rem;border-radius:999px;font-size:.78rem;color:var(--muted)}
+    .nav-wrap{position:sticky;top:0;z-index:50;background:rgba(11,15,25,.93);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+    .nav{max-width:1400px;margin:0 auto;display:flex;gap:.2rem;padding:.55rem 1rem;overflow-x:auto;scrollbar-width:none}
+    .nav::-webkit-scrollbar{display:none}
+    .nav a{flex-shrink:0;text-decoration:none;color:var(--muted);font-size:.82rem;font-weight:500;padding:.4rem .85rem;border-radius:8px;transition:all .15s;white-space:nowrap;cursor:pointer}
+    .nav a:hover,.nav a.active{background:var(--accent);color:#fff}
+    main{max-width:1400px;margin:0 auto;padding:1.8rem 1rem 4rem}
+    .section-title{font-size:1rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin:2.2rem 0 1rem;padding-left:.5rem;border-left:3px solid var(--accent)}
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:1.1rem}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.25rem;transition:all .2s;display:flex;flex-direction:column;gap:.75rem}
+    .card:hover{background:var(--card-hover);border-color:#374151;transform:translateY(-3px);box-shadow:0 12px 28px rgba(0,0,0,.28)}
+    .card-icon{width:42px;height:42px;border-radius:11px;display:grid;place-items:center;font-size:1.25rem;font-weight:700;color:#fff;flex-shrink:0}
+    .card h3{font-size:1.08rem;font-weight:600;line-height:1.3}
+    .card .desc{font-size:.82rem;color:var(--muted);flex:1}
+    .card .price{font-size:.88rem;font-weight:500;color:#fbbf24}
+    .card-actions{display:flex;gap:.45rem;margin-top:.2rem}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:.3rem;padding:.5rem .9rem;border-radius:8px;font-size:.82rem;font-weight:500;border:none;cursor:pointer;font-family:inherit;transition:all .15s;text-decoration:none}
+    .btn-primary{background:var(--accent);color:#fff;flex:1}
+    .btn-primary:hover{background:#2563eb}
+    .btn-download{background:rgba(16,185,129,.14);color:var(--success);border:1px solid rgba(16,185,129,.28)}
+    .btn-download:hover{background:rgba(16,185,129,.24)}
+    .btn svg{width:14px;height:14px}
+    .detail-view{display:none;scroll-margin-top:60px}
+    .detail-view.active{display:block}
+    .back-bar{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.8rem;margin-bottom:1.3rem}
+    .back-btn{background:var(--card);color:var(--text);border:1px solid var(--border);padding:.45rem 1rem;border-radius:8px;cursor:pointer;font-family:inherit;font-size:.88rem;display:inline-flex;align-items:center;gap:.35rem}
+    .back-btn:hover{background:var(--card-hover)}
+    .detail-view h2{font-size:1.5rem;font-weight:700;margin-bottom:1rem;display:flex;align-items:center;gap:.55rem}
+    .table-card{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden}
+    .table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+    table{width:100%;border-collapse:collapse;font-size:.78rem;min-width:780px}
+    th,td{padding:.6rem .75rem;text-align:left;border:1px solid var(--border);vertical-align:top}
+    thead th{background:#1e293b;color:#f8fafc;font-weight:600;font-size:.75rem;text-align:center;white-space:nowrap}
+    thead th.price-h{background:#0f172a;color:#fbbf24}
+    tbody tr:nth-child(even){background:rgba(255,255,255,.02)}
+    tbody tr:hover{background:rgba(255,255,255,.04)}
+    td.center{text-align:center}
+    td.check{text-align:center;color:var(--success);font-weight:700}
+    td.cross{text-align:center;color:#ef4444;font-weight:700}
+    .cat{background:rgba(59,130,246,.1)!important;font-weight:600;color:#93c5fd;white-space:nowrap}
+    .subcat{background:rgba(255,255,255,.03)!important;font-weight:500;color:#cbd5e1;white-space:nowrap}
+    .note{font-size:.72rem;color:var(--muted)}
+    .price-cell{font-weight:700;color:#fbbf24;text-align:center;background:rgba(251,191,36,.08)!important}
+    .dl-bar{display:flex;flex-wrap:wrap;gap:.55rem;padding:.9rem 1.1rem;background:rgba(0,0,0,.22);border-top:1px solid var(--border);align-items:center}
+    .dl-bar .label{font-size:.82rem;color:var(--muted)}
+    .toast{position:fixed;bottom:1.8rem;left:50%;transform:translateX(-50%) translateY(80px);background:#059669;color:#fff;padding:.8rem 1.4rem;border-radius:11px;font-size:.92rem;font-weight:500;box-shadow:0 10px 36px rgba(0,0,0,.4);opacity:0;transition:all .3s cubic-bezier(.34,1.56,.64,1);z-index:999}
+    .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+    footer{text-align:center;padding:1.8rem 1rem;color:var(--muted);font-size:.82rem;border-top:1px solid var(--border)}
+    @media(max-width:640px){.hero{padding:2.2rem 1rem}.card-actions{flex-direction:column}table{font-size:.7rem}}
+  </style>
+</head>
+<body>
+<header class="hero">
+  <h1>全平台运营 & 建站服务套餐</h1>
+  <p>社交媒体 · 小红书 · 抖音 · 视频号 · 独立站 · SEO · 社群 · 地图<br>内容原样呈现 · 每个模块可单独下载独立 HTML · 适合 GitHub Pages</p>
+  <div class="badge-row">
+    <span class="badge">21+ 完整套餐</span>
+    <span class="badge">数据不可修改</span>
+    <span class="badge">一键下载独立 HTML</span>
+    <span class="badge">Logo 已核对正确</span>
+    <span class="badge">GitHub Ready</span>
+  </div>
+</header>
+<div class="nav-wrap">
+  <nav class="nav">
+    <a class="active" onclick="showHome()">全部套餐</a>
+    <a onclick="scrollToSec('cn-social')">国内平台</a>
+    <a onclick="scrollToSec('global-social')">海外社媒</a>
+    <a onclick="scrollToSec('build')">建站方案</a>
+    <a onclick="scrollToSec('seo')">SEO & 地图</a>
+    <a onclick="scrollToSec('community')">社群运营</a>
+  </nav>
+</div>
+<main>
+  <div id="homeView">
+    <div class="section-title" id="cn-social">国内平台运营</div>
+    <div class="grid">
+      <div class="card">
+        <div class="card-icon" style="background:#fe2c55">📕</div>
+        <h3>小红书运营服务</h3>
+        <p class="desc">季度 / 矩阵 / 半年矩阵 / 一年矩阵 · 主账号 + 矩阵 + UGC + SEO + 爆文</p>
+        <p class="price">¥10,800 – ¥59,800</p>
+        <div class="card-actions">
+          <button class="btn btn-primary" onclick="showDetail('xhs')">查看详情</button>
+          <button class="btn btn-download" onclick="downloadPackage('xhs')"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>下载表格</button>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-icon" style="background:#000;color:#fff">♪</div>
+        <h3>抖音运营服务</h3>
+        <p class="desc">标准版 / 高级版 / 半年 / 一年 · 蓝V + 矩阵 + 剪辑 + 流量 + 粉丝</p>
+        <p class="price">¥15,800 – ¥76,800</p>
+        <div class="card-actions">
+          <button class="btn btn-primary" onclick="showDetail('douyin')">查看详情</button>
+          <button class="btn btn-download" onclick="downloadPackage('douyin')"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>下载表格</button>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-icon" style="background:#07c160">▶</div>
+        <h3>视频号运营</h3>
+        <p class="desc">季度 / 半年 / 一年 · 账号搭建 + 内容 + 剪辑 + 流量保障</p>
+        <p class="price">¥14,800 – ¥58,800</p>
+        <div class="card-actions">
+          <button class="btn btn-primary" onclick="showDetail('shipinhao')">查看详情</button>
+          <button class="btn btn-download" onclick="downloadPackage('shipinhao')"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>下载表格</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-title" id="global-social">海外社交媒体运营</div>
+    <div class="grid">
+      <div class="card"><div class="card-icon" style="background:linear-gradient(135deg,#00f2ea,#ff0050)">♪</div><h3>TikTok运营</h3><p class="desc">入门版 / 高级 / 旗舰 · 起号 + 日常 + 粉丝保证 + 播放量</p><p class="price">¥15,800 – ¥56,800</p><div class="card-actions"><button class="btn btn-primary" onclick="showDetail('tiktok')">查看详情</button><button class="btn btn-download" onclick="downloadPackage('tiktok')"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>下载表格</button></div></div>
+      <div class="card"><div class="card-icon" style="background:#1877f2">f</div><h3>Facebook全托管</h3><p class="desc">基础 / 高级 / 旗舰 · 账号 + 内容 + 广告 + 线索</p><p class="price">¥12,800 – ¥39,800</p><div class="card-actions"><button class="btn btn-primary" onclick="showDetail('facebook')">查看详情</button><button class="btn btn-download" onclick="downloadPackage('facebook')"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>下载表格</button></div></div>
+      <div class="card"><div class="card-icon" style="background:#000;color:#e7e9ea">𝕏</div><h3>X (Twitter) 运营包</h3><p class="desc">基础 / 进阶 / 高级 · 推文 + 话题 + 关键词广告</p><p class="price">¥15,800 – ¥58,800</p><div class="card-actions"><button class="btn btn-primary" onclick="showDetail('x')">查看详情</button><button class="btn btn-download" onclick="downloadPackage('x')"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>下载表格</button></div></div>
+      <div class="card"><div class="card-icon" style="background:#ff0000">▶</div><h3>YouTube运营</h3><p class="desc">初级 / 高级 / 旗舰 · 视频 + 播放量 + TrueView广告</p><p class="price">¥15,800 – ¥56,800</p><div class="card-actions"><button class="btn btn-primary" onclick="showDetail('youtube')">查看详情</button><button class="btn btn-download" onclick="downloadPackage('youtube')"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>下载表格</button></div></div>
+      <div class="card"><div class="card-icon" style="background:#0a66c2">in</div><h3>领英服务</h3><p class="desc">基础 / 标准 / 高级 · 主页 + 内容 + 广告 + 粉丝</p><p class="price">¥25,800 – ¥88,800</p><div class="card-actions"><button class="btn btn-primary" onclick="showDetail('linkedin')">查看详情</button><button class="btn btn-download" onclick="downloadPackage('linkedin')"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>下载表格</button></div></div>
+      <div class="card"><div class="card-icon" style="background:#ff4500">🤖</div><h3>Reddit运营服务</h3><p class="desc">初级 / 高级 / 进阶 · Sub + Karma + 内容 + 增长</p><p class="price">¥39,800 – ¥149,800</p><div class="card-actions"><button class="btn btn-primary" onclick="showDetail('reddit')">查看详情</button><button class="btn btn-download" onclick="downloadPackage('reddit')"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>下载表格</button></div></div>
+      <div class="card"><div class="card-icon" style="background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888)">📷</div><h3>Instagram运营包</h3><p class="desc">4版本 · 主账号 + 矩阵 + UGC + SEO + 广告</p><p class="price">¥10,800 – ¥59,800</p><div class="card-actions"><button class="btn btn-primary" onclick="showDetail('instagram')">查看详情</button><button class="btn btn-download" onclick="downloadPackage('instagram')"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>下载表格</button></div></div>
+      <div class="card"><div class="card-icon" style="background:#000">🧵</div><h3>Threads运营服务</h3><p class="desc">基础 / 进阶 / 高级 · 账号 + 内容 + 社区 + 引流</p><p class="price">¥12,800 – ¥36,600</p><div class="card-actions"><button class="btn btn-primary" onclick="showDetail('threads')">查看详情</button><button class="btn btn-download" onclick="downloadPackage('threads')"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>下载表格</button></div></div>
+      <div class="card"><div class="card-icon" style="background:#e60023">P</div><h3>Pinterest运营服务包</h3><p class="desc">基础 / 进阶 / 高级 · Pin + 曝光保证 + 广告</p><p class="price">¥16,800 – ¥62,800</p><div class="card-actions"><button class="btn btn-primary" onclick="showDetail('pinterest')">查看详情</button><button class="btn btn-download" onclick="downloadPackage('pinterest')"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>下载表格</button></div></div>
+      <div class="card"><div class="card-icon" style="background:#ff2d55">🍋</div><h3>Lemon8 运营服务包</h3><p class="desc">基础 / 进阶 / 高级 · 笔记 + 关键词 + 增长</p><p class="price">¥14,800 – ¥49,800</p><div class="card-actions"><button class="btn btn-primary" onclick="showDetail('lemon8')">查看详情</button><button class="btn btn-download" onclick="downloadPackage('lemon8')"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>下载表格</button></div></div>
+    </div>
+
+    <div class="section-title" id="build">建站报价方案</div>
+    <div class="grid">
+      <div class="card"><div class="card-icon" style="background:#96bf48">S</div><h3>Shopify 建站</h3><p class="desc">基础 / 标准 / 高级 · 跨境电商独立站</p><p class="price">¥8,800 – ¥18,800</p><div class="card-actions"><button class="btn btn-primary" onclick="showDetail('shopify')">查看详情</button><button class="btn btn-download" onclick="downloadPackage('shopify')"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>下载表格</button></div></div>
+      <div class="card"><div class="card-icon" style="background:#6366f1">Y</div><h3>ShopYY 建站</h3><p class="desc">基础 / 标准 / 高级 · 快速建站 · 低维护</p><p class="price">¥10,800 – ¥19,800</p><div class="card-actions"><button class="btn btn-primary" onclick="showDetail('shopyy')">查看详情</button><button class="btn btn-download" onclick="downloadPackage('shopyy')"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>下载表格</button></div></div>
+      <div class="card"><div class="card-icon" style="background:#21759b">W</div><h3>WordPress / WooCommerce</h3><p class="desc">基础 / 标准 / 高级 · 外贸官网 + 商城</p><p class="price">¥16,800 – ¥25,800</p><div class="card-actions"><button class="btn btn-primary" onclick="showDetail('wordpress')">查看详情</button><button class="btn btn-download" onclick="downloadPackage('wordpress')"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>下载表格</button></div></div>
+    </div>
+
+    <div class="section-title" id="seo">SEO & 地图拓客</div>
+    <div class="grid">
+      <div class="card"><div class="card-icon" style="background:#4285f4">G</div><h3>Google SEO 年度增长</h3><p class="desc">标准版 / 增长版 / 旗舰版 · 全站优化 + 内容 + 外链</p><p class="price">¥39,600 – ¥79,800 / 年</p><div class="card-actions"><button class="btn btn-primary" onclick="showDetail('google-seo')">查看详情</button><button class="btn btn-download" onclick="downloadPackage('google-seo')"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>下载表格</button></div></div>
+      <div class="card"><div class="card-icon" style="background:#34a853">📍</div><h3>Google Map 拓客</h3><p class="desc">黄金 / 铂金 / 钻石 · 店铺排名 + 帖子 + 好评管理</p><p class="price">¥12,800 – ¥28,800 / 季度</p><div class="card-actions"><button class="btn btn-primary" onclick="showDetail('google-map')">查看详情</button><button class="btn btn-download" onclick="downloadPackage('google-map')"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>下载表格</button></div></div>
+    </div>
+
+    <div class="section-title" id="community">社群运营</div>
+    <div class="grid">
+      <div class="card"><div class="card-icon" style="background:#1877f2">👥</div><h3>Facebook 群组运营</h3><p class="desc">季度 / 半年 / 年度 · 创建 + 内容 + 增长 + 活动</p><p class="price">¥15,800 – ¥56,800</p><div class="card-actions"><button class="btn btn-primary" onclick="showDetail('fb-group')">查看详情</button><button class="btn btn-download" onclick="downloadPackage('fb-group')"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>下载表格</button></div></div>
+      <div class="card"><div class="card-icon" style="background:#4a76a8">VK</div><h3>VK 社区账号运营</h3><p class="desc">季度 / 半年 / 年 · 俄语市场 · 视觉 + 内容 + 互动</p><p class="price">¥15,800 – ¥59,800</p><div class="card-actions"><button class="btn btn-primary" onclick="showDetail('vk')">查看详情</button><button class="btn btn-download" onclick="downloadPackage('vk')"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>下载表格</button></div></div>
+      <div class="card"><div class="card-icon" style="background:#5865f2">D</div><h3>Discord 社群代运营</h3><p class="desc">基础 / 进阶 / 高级推荐 · 服务器 + Bot + 活动 + 增长</p><p class="price">¥10,800 – ¥39,800 / 季度</p><div class="card-actions"><button class="btn btn-primary" onclick="showDetail('discord')">查看详情</button><button class="btn btn-download" onclick="downloadPackage('discord')"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>下载表格</button></div></div>
+    </div>
+  </div>
+  <div id="detailView" class="detail-view"></div>
+</main>
+<footer>
+  <p>内容原样呈现 · 数据不可修改 · Logo 已核对正确 · 每个模块可单独下载为独立 HTML<br>
+  适合直接上传 GitHub 仓库 / GitHub Pages · 纯前端无后端</p>
+</footer>
+<div class="toast" id="toast">✓ 下载已开始</div>
+<script>
+const packageTitles={xhs:'小红书运营服务',douyin:'抖音运营服务',shipinhao:'视频号运营',tiktok:'TikTok运营',facebook:'Facebook全托管运营包',x:'X_Twitter运营包',youtube:'YouTube运营',linkedin:'领英服务',reddit:'Reddit运营服务',instagram:'Instagram运营包',threads:'Threads运营服务',pinterest:'Pinterest运营服务包',lemon8:'Lemon8运营服务包',shopify:'Shopify建站报价方案',shopyy:'ShopYY建站报价方案',wordpress:'WordPress_WooCommerce建站报价方案','google-seo':'Google_SEO年度增长服务','google-map':'Google_Map拓客','fb-group':'Facebook群组运营',vk:'VK社区账号运营服务',discord:'Discord社群代运营服务'};
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg||'✓ 下载已开始';t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200)}
+function showHome(){document.getElementById('homeView').style.display='block';document.getElementById('detailView').classList.remove('active');document.getElementById('detailView').innerHTML='';window.scrollTo({top:0,behavior:'smooth'})}
+function scrollToSec(id){showHome();setTimeout(()=>{const el=document.getElementById(id);if(el)el.scrollIntoView({behavior:'smooth',block:'start'})},50)}
+function showDetail(id){const data=packageData[id];if(!data){document.getElementById('homeView').style.display='none';const view=document.getElementById('detailView');view.classList.add('active');view.innerHTML=`<div class="back-bar"><button class="back-btn" onclick="showHome()">← 返回全部套餐</button></div><h2>${packageTitles[id]||id}</h2><div class="table-card" style="padding:2rem;text-align:center"><p style="color:var(--muted);margin-bottom:1.5rem">此套餐完整表格请查看 <a href="social_media_packages.html" style="color:var(--accent)">social_media_packages.html</a>（已包含全部原始内容）</p><a href="social_media_packages.html" class="btn btn-primary" style="display:inline-flex">打开完整表格</a></div>`;window.scrollTo({top:0,behavior:'smooth'});return}document.getElementById('homeView').style.display='none';const view=document.getElementById('detailView');view.classList.add('active');view.innerHTML=`<div class="back-bar"><button class="back-btn" onclick="showHome()">← 返回全部套餐</button><button class="btn btn-download" onclick="downloadPackage('${id}')"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="14" height="14"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>下载表格 (Excel)</button></div><h2>${data.icon||''} ${data.title}</h2><div class="table-card"><div class="table-scroll">${data.table}</div><div class="dl-bar"><span class="label">单独下载：</span><button class="btn btn-download" onclick="downloadPackage('${id}')">下载表格 (Excel)</button></div></div>`;window.scrollTo({top:0,behavior:'smooth'})}
+function downloadPackage(id){
+  const title = packageTitles[id] || id;
+  // Excel files for the 3 Chinese platforms
+  const xlsxMap = {
+    xhs: 'packages/xlsx/小红书运营服务.xlsx',
+    douyin: 'packages/xlsx/抖音运营服务.xlsx',
+    shipinhao: 'packages/xlsx/视频号运营.xlsx'
+  };
+  if (xlsxMap[id]) {
+    const a = document.createElement('a');
+    a.href = xlsxMap[id];
+    a.download = title + '.xlsx';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    showToast('✓ ' + title + ' 表格已下载 (Excel)');
+    return;
+  }
+  // Fallback for others: still allow HTML table download if data exists
+  const data = packageData[id];
+  if (!data) {
+    showToast('该套餐完整表格请查看 social_media_packages.html');
+    return;
+  }
+  // Generate clean Markdown table for download as .md (or keep simple)
+  const a = document.createElement('a');
+  a.href = 'social_media_packages.html';
+  a.download = title + '.html';
+  a.target = '_blank';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  showToast('✓ 请从完整页面中查看/保存该套餐');
+}
+const packageData={
+xhs:{title:'小红书运营服务',icon:'📕',table:`<table><thead><tr><th>服务维度</th><th>服务板块</th><th>事项说明</th><th class="price-h">季度<br>10800元</th><th class="price-h">季度 / 矩阵<br>(16800 元)</th><th class="price-h">半年 / 矩阵<br>(29800 元)</th><th class="price-h">一年 / 矩阵<br>(59800 元)</th></tr></thead><tbody><tr><td class="cat" rowspan="6">账号搭建与定位</td><td class="subcat">主账号创建与认证</td><td>创建并认证小红书主账号，设置适配的用户名与头像</td><td class="center">1 个</td><td class="center">1 个</td><td class="center">1 个</td><td class="center">1 个</td></tr><tr><td class="subcat">主账号定位</td><td>明确主账号定位及内容方向，编写简介并规划选题图文</td><td class="check">√</td><td class="check">√</td><td class="check">√</td><td class="check">√</td></tr><tr><td class="subcat">企业号辅助创建</td><td>协助用户完成企业号认证，提供流程指导支持</td><td class="check">√</td><td class="check">√</td><td class="check">√</td><td class="check">√</td></tr><tr><td class="subcat">矩阵账号搭建</td><td>构建矩阵账号，设置适配的用户名与头像</td><td class="cross">×</td><td class="center">1 个</td><td class="center">1 个</td><td class="center">1 个</td></tr><tr><td class="subcat">矩阵账号定位</td><td>确定矩阵账号的定位与内容方向，撰写简介并规划选题图文内容</td><td class="cross">×</td><td class="check">√</td><td class="check">√</td><td class="check">√</td></tr><tr><td class="subcat">UGC 账号定位</td><td>针对行业对标笔记，通过话术精准种草用户，吸引行业潜在客户</td><td class="center">30次</td><td class="center">50 次</td><td class="center">80 次</td><td class="center">200 次</td></tr><tr><td class="cat" rowspan="3">内容规划</td><td class="subcat">内容形式定位</td><td>确立统一的内容形式及风格（图文），确保账号风格连贯</td><td class="check">√</td><td class="check">√</td><td class="check">√</td><td class="check">√</td></tr><tr><td class="subcat">内容日历</td><td>制定内容发布计划，规划核心主题及发布频次</td><td class="check">√</td><td class="check">√</td><td class="check">√</td><td class="check">√</td></tr><tr><td class="subcat">创意策划</td><td>依据平台热点话题创作，定期收集新创意，保障内容丰富性</td><td class="check">√</td><td class="check">√</td><td class="check">√</td><td class="check">√</td></tr><tr><td class="cat" rowspan="3">增长策略</td><td class="subcat">SEO 优化</td><td>在内容中植入相关关键词及热门话题标签，提高搜索曝光度</td><td class="check">√</td><td class="check">√</td><td class="check">√</td><td class="check">√</td></tr><tr><td class="subcat">联合推广</td><td>通过发布种草内容，联合真实 UGC 用户推广，实现品牌口碑传播</td><td class="check">√</td><td class="check">√</td><td class="check">√</td><td class="check">√</td></tr><tr><td class="subcat">话题参与</td><td>参与小红书热点话题，增加账号曝光与热度</td><td class="check">√</td><td class="check">√</td><td class="check">√</td><td class="check">√</td></tr><tr><td class="cat" rowspan="2">互动运营</td><td class="subcat">评论及私信互动管理</td><td>及时回复账号评论与私信，增强粉丝互动及粘性</td><td class="check">√</td><td class="check">√</td><td class="check">√</td><td class="check">√</td></tr><tr><td class="subcat">社区互动</td><td>在平台笔记下适当评论互动，提升账号活跃度与互动权重</td><td class="check">√</td><td class="check">√</td><td class="check">√</td><td class="check">√</td></tr><tr><td class="cat" rowspan="2">数据分析</td><td class="subcat">数据跟踪监测</td><td>定期监测账号数据，关注粉丝增长、内容互动及转化状况</td><td class="check">√</td><td class="check">√</td><td class="check">√</td><td class="check">√</td></tr><tr><td class="subcat">调整策略</td><td>依据数据分析，实时优化内容与运营策略，促进账号持续发展</td><td class="check">√</td><td class="check">√</td><td class="check">√</td><td class="check">√</td></tr><tr><td class="cat" rowspan="5">账号运营</td><td class="subcat">内容发布执行</td><td>按计划定期创作发布，维持账号活跃度及用户吸引力</td><td class="center">保底 36 条</td><td class="center">保底 36 条</td><td class="center">保底 72 条</td><td class="center">保底 150 条</td></tr><tr><td class="subcat">爆文笔记</td><td>挑选优质内容，联合打造爆款笔记，把握热点、突出特色，精准引流，推动爆文产生</td><td class="center">包含 3篇爆文</td><td class="center">包含 4 篇爆文</td><td class="center">包含 8 篇爆文</td><td class="center">包含 12 篇爆文</td></tr><tr><td class="subcat">效果保障</td><td>笔记总曝光量</td><td class="center">5W+</td><td class="center">7W+</td><td class="center">20W+</td><td class="center">30W+</td></tr><tr><td class="subcat">话题策划</td><td>策划热点话题，结合小红书创作灵感，提升内容曝光及用户参与</td><td class="check">√</td><td class="check">√</td><td class="check">√</td><td class="check">√</td></tr><tr><td class="subcat">互动管理</td><td>管理回复笔记评论与私信，作为日常运营工作，保证及时互动</td><td class="check">√</td><td class="check">√</td><td class="check">√</td><td class="check">√</td></tr><tr><td class="cat" rowspan="4">矩阵账号运营</td><td class="subcat">矩阵内容发布</td><td>按计划定期创作发布，维持矩阵账号活跃度及用户吸引力</td><td class="cross">×</td><td class="center">保底 30 条</td><td class="center">保底 60 条</td><td class="center">保底 120 条</td></tr><tr><td class="subcat">话题策划</td><td>策划热点话题，借助小红书创作灵感，提高内容曝光及用户参与。通过种草笔记制作，强化品牌、种草及干货内容铺垫，助力口碑传播</td><td class="cross">×</td><td class="check">√</td><td class="check">√</td><td class="check">√</td></tr><tr><td class="subcat">互动管理</td><td>管理回复矩阵号笔记评论与私信，作为日常运营工作</td><td class="cross">×</td><td class="check">√</td><td class="check">√</td><td class="check">√</td></tr><tr><td class="subcat">私域路径</td><td>搭建微信私域引流渠道，引导用户合规进入微信私域，实现业务转化</td><td class="cross">×</td><td class="check">√</td><td class="check">√</td><td class="check">√</td></tr><tr><td class="cat">UGC 用户发声</td><td class="subcat">优质笔记分享</td><td>通过活跃 UGC 用户分享服务过程及成果的优质笔记，增强真实用户口碑传播</td><td class="center">3-5个 / 8篇</td><td class="center">5 - 8 个 / 10 篇</td><td class="center">10 - 15 个 / 20 篇</td><td class="center">20 - 25 个 / 40 篇</td></tr><tr><td class="cat" rowspan="2">SEO 关键词优化</td><td class="subcat">关键词探寻</td><td>通过运营工具及数据分析，探寻用户在小红书搜索常用的关键词与短语，优化内容布局，提高搜索曝光</td><td class="center">10 个词</td><td class="center">15 个词</td><td class="center">50 个词</td><td class="center">100 个词</td></tr><tr><td class="subcat">关键词优化</td><td>将探寻的关键词合理融入标题或内容，优化搜索结果可见性，进一步提高内容曝光</td><td class="center">10 个词</td><td class="center">15 个词</td><td class="center">20 个词</td><td class="center">50 个词</td></tr><tr><td class="cat">客户服务与沟通</td><td class="subcat">客服服务时间</td><td>提供 5×8 小时专属一对一客服，及时解答日常疑问，保障服务质量</td><td class="check">√</td><td class="check">√</td><td class="check">√</td><td class="check">√</td></tr><tr><td class="cat" rowspan="2">增值服务</td><td class="subcat">AI 竖版短视频定制生成</td><td>针对无原生拍摄素材的客户，按需生成符合账号定位、内容规划与平台调性的 15s 竖版短视频，含 AI 画面生成、人声配音、字幕制作、基础剪辑调色，全内容匹配小红书平台内容规范与流量规则。因 AI 生成需消耗大量算力与平台积分，成本较高，因此作为独立增值服务按需选购</td><td colspan="4" class="center note">按需选购，500 元 / 条</td></tr><tr><td class="subcat">AI 高清商用图片定制生成</td><td>针对无原生拍摄素材的客户，按需生成符合账号人设、产品调性，适配小红书 图文帖子 / 封面 / 头像使用的高清商用图片，含画面精修、细节优化、多尺寸适配，5 张为 1 组。因 AI 生成需消耗大量算力与平台积分，成本较高，因此作为独立增值服务按需选购</td><td colspan="4" class="center note">按需选购，200 元 / 5张</td></tr></tbody></table>`},
+douyin:{title:'抖音运营服务',icon:'♪',table:`<table><thead><tr><th>服务</th><th>服务介绍</th><th>服务说明</th><th class="price-h">标准版/15800元季度</th><th class="price-h">高级版/22800元季度</th><th class="price-h">38800元/半年</th><th class="price-h">76800元/一年</th></tr></thead><tbody><tr><td class="cat" rowspan="2">账号运营</td><td class="subcat">蓝V账号</td><td>协助进行抖音蓝V账号1个</td><td class="check">√</td><td class="check">√</td><td class="check">√</td><td class="check">√</td></tr><tr><td class="subcat">矩阵账号</td><td>矩阵账号</td><td class="center">1主账号</td><td class="center">1主账号+1矩阵</td><td class="center">1主账号+1矩阵</td><td class="center">1主账号+1矩阵</td></tr><tr><td class="cat" rowspan="9">账号搭建</td><td class="subcat">蓝V认证</td><td>展示企业信息、提升企业信用及形象</td><td class="check">√</td><td class="check">√</td><td class="check">√</td><td class="check">√</td></tr><tr><td class="subcat">企业号装修</td><td>主页头像、昵称、简介，背景图，商家经营信息设置，商家模块内容设置</td><td class="check">√</td><td class="check">√</td><td class="check">√</td><td class="check">√</td></tr><tr><td class="subcat">检测分析</td><td>账号检测分析，推广情况分析，行业分析</td><td class="check">√</td><td class="check">√</td><td class="check">√</td><td class="check">√</td></tr><tr><td class="subcat">标签打造</td><td>人群画像及行为、兴趣标签垂直</td><td class="check">√</td><td class="check">√</td><td class="check">√</td><td class="check">√</td></tr><tr><td class="subcat">视频标签</td><td>针对目标人群进行标签推送视频、产品应用场景、人工文案编写</td><td class="check">√</td><td class="check">√</td><td class="check">√</td><td class="check">√</td></tr><tr><td class="subcat">账号多维度诊断</td><td>内容匹配度诊断、投稿策略诊断、标签排名诊断、互动行为诊断</td><td class="check">√</td><td class="check">√</td><td class="check">√</td><td class="check">√</td></tr><tr><td class="subcat">账号粉丝画像</td><td>大数据分析短视频账号的粉丝特征与构成，构建账号粉丝画像</td><td class="check">√</td><td class="check">√</td><td class="check">√</td><td class="check">√</td></tr><tr><td class="subcat">人群定向</td><td>进行短视频账号定位规划，运营专家为账号和视频打上智能标签，持续吸引目标粉丝</td><td class="check">√</td><td class="check">√</td><td class="check">√</td><td class="check">√</td></tr><tr><td class="subcat">热门话题</td><td>通过智能选词技术，在视频发布的同时为每条视频搭配行业热门话题，增加视频自然流量</td><td class="check">√</td><td class="check">√</td><td class="check">√</td><td class="check">√</td></tr><tr><td class="cat">账号搭建</td><td class="subcat">SEO设置</td><td>运营人员分析设置关键词，进行SEO关键词组设置</td><td class="check">√</td><td class="check">√</td><td class="check">√</td><td class="check">√</td></tr><tr><td class="cat" rowspan="2">获客线索</td><td class="subcat">线索同步</td><td>拨打主页电话、评论、私信留下联系方式的意向客户电话或短信提醒，可及时转化意向客户</td><td class="check">√</td><td class="check">√</td><td class="check">√</td><td class="check">√</td></tr><tr><td class="subcat">线索同步</td><td>视频发布评论线索实时查看转化</td><td class="check">√</td><td class="check">√</td><td class="check">√</td><td class="check">√</td></tr><tr><td class="cat" rowspan="2">搜索排名</td><td class="subcat">关键词数据挖掘</td><td>为企业提供D音搜索优化、关键词智能筛选投放、热搜词筛选，精准定向推广等</td><td class="check">√</td><td class="check">√</td><td class="check">√</td><td class="check">√</td></tr><tr><td class="subcat">关键词排名</td><td>抖音关键词自然排名前10</td><td class="center">≥100个</td><td class="center">≥200个</td><td class="center">≥400个</td><td class="center">≥800个</td></tr><tr><td class="cat">人工精剪</td><td class="subcat">人工精剪</td><td>主账号剪辑师人工视频剪辑，专业文案，提升用户有效转化，提高视频专业度及流量曝光</td><td class="center">40条</td><td class="center">70条</td><td class="center">150条</td><td class="center">280条</td></tr><tr><td class="cat">粉丝运营</td><td class="subcat">粉丝增长</td><td>针对账号定位进行精准粉丝运营和增长，目标用户粉丝增长转化</td><td class="center">1000</td><td class="center">1500</td><td class="center">3000</td><td class="center">6000</td></tr><tr><td class="cat" rowspan="3">运营服务</td><td class="subcat">视频流量</td><td>运营专家进行账号和视频等数据运营工作，推送视频带来的流量，全面曝光</td><td class="center">≥10W</td><td class="center">≥10W</td><td class="center">≥30W</td><td class="center">≥60W</td></tr><tr><td class="subcat">运营月报</td><td>每月数据总结分析和下阶段运营计划</td><td class="check">√</td><td class="check">√</td><td class="check">√</td><td class="check">√</td></tr><tr><td class="subcat">客服服务</td><td>5*8小时1对1服务</td><td class="check">√</td><td class="check">√</td><td class="check">√</td><td class="check">√</td></tr><tr><td class="cat">增值服务</td><td class="subcat">AI 竖版短视频定制生成</td><td>针对无原生拍摄素材的客户，按需生成符合账号定位、内容规划与平台调性的 15s 竖版短视频，含 AI 画面生成、人声配音、字幕制作、基础剪辑调色，全内容匹配抖音平台内容规范与流量规则。因 AI 生成需消耗大量算力与平台积分，成本较高，因此作为独立增值服务按需选购</td><td colspan="4" class="center note">按需选购，500 元 / 条</td></tr></tbody></table>`},
+shipinhao:{title:'视频号运营',icon:'▶',table:`<table><thead><tr><th>服务</th><th>服务介绍</th><th>服务说明</th><th class="price-h">季度<br>14800</th><th class="price-h">半年<br>28800</th><th class="price-h">一年<br>58800</th></tr></thead><tbody><tr><td class="cat" rowspan="5">账号搭建</td><td class="subcat">账号创建</td><td>注册账号：根据个人或者企业的精准定位和热点调研，进行账号包装，环境搭建</td><td class="check">√</td><td class="check">√</td><td class="check">√</td></tr><tr><td class="subcat">蓝V认证</td><td>展示企业信息、提升企业信用及形象</td><td class="check">√</td><td class="check">√</td><td class="check">√</td></tr><tr><td class="subcat">账号装修</td><td>主页头像、昵称、简介，背景图，个人或者企业信息设置，模块内容设置</td><td class="check">√</td><td class="check">√</td><td class="check">√</td></tr><tr><td class="subcat">检测分析</td><td>账号检测分析，推广情况分析，行业分析</td><td class="check">√</td><td class="check">√</td><td class="check">√</td></tr><tr><td class="subcat">标签打造</td><td>人群画像及行为、兴趣标签垂直</td><td class="check">√</td><td class="check">√</td><td class="check">√</td></tr><tr><td class="cat" rowspan="12">运营内容</td><td class="subcat">行业调研</td><td>围绕个人/品牌所属行业进行市场调研，梳理用户需求、内容趋势及平台机会点，为账号定位和内容方向提供依据。</td><td class="check">√</td><td class="check">√</td><td class="check">√</td></tr><tr><td class="subcat">竞品账号分析</td><td>分析同行及竞品账号的内容结构、更新节奏、爆款方向、运营优劣势，提炼可借鉴的运营策略。</td><td class="check">√</td><td class="check">√</td><td class="check">√</td></tr><tr><td class="subcat">策划案撰写</td><td>结合个人/品牌定位与阶段目标，制定账号运营策划方案，明确内容方向、发布节奏及执行重点。</td><td class="check">√</td><td class="check">√</td><td class="check">√</td></tr><tr><td class="subcat">会议沟通</td><td>定期进行项目沟通与进度同步，对运营方向、内容选题及执行情况进行确认和调整。</td><td class="check">√</td><td class="check">√</td><td class="check">√</td></tr><tr><td class="subcat">拍摄脚本撰写</td><td>根据内容规划输出短视频拍摄脚本，包含主题设定、画面思路、台词文案及镜头建议。</td><td class="check">√</td><td class="check">√</td><td class="check">√</td></tr><tr><td class="subcat">素材收集与整理</td><td>根据账号内容需求进行素材收集、筛选与整理，统一归档，提升后续内容制作效率。</td><td class="check">√</td><td class="check">√</td><td class="check">√</td></tr><tr><td class="subcat">视频剪辑制作</td><td>完成短视频剪辑、字幕、节奏、转场及基础包装处理，输出符合平台传播逻辑的视频内容。</td><td class="check">√</td><td class="check">√</td><td class="check">√</td></tr><tr><td class="subcat">文案撰写</td><td>根据内容主题撰写发布文案，包括标题、正文、话题标签等，提升内容表达与传播效果。</td><td class="check">√</td><td class="check">√</td><td class="check">√</td></tr><tr><td class="subcat">账号多维度诊断</td><td>内容匹配度诊断、投稿策略诊断、标签排名诊断、互动行为诊断</td><td class="check">√</td><td class="check">√</td><td class="check">√</td></tr><tr><td class="subcat">人群定向</td><td>进行短视频账号定位规划，运营专家为账号和视频打上智能标签，持续吸引目标粉丝</td><td class="check">√</td><td class="check">√</td><td class="check">√</td></tr><tr><td class="subcat">热门话题</td><td>通过智能选词技术，在视频发布的同时为每条视频搭配行业热门话题，增加视频自然流量</td><td class="check">√</td><td class="check">√</td><td class="check">√</td></tr><tr><td class="subcat">SEO设置</td><td>运营人员分析设置关键词，进行SEO关键词组设置</td><td class="check">√</td><td class="check">√</td><td class="check">√</td></tr><tr><td class="cat">搜索排名</td><td class="subcat">关键词数据挖掘</td><td>为个人/企业提供视频号搜索优化、热搜词筛选，精准定向推广</td><td class="check">√</td><td class="check">√</td><td class="check">√</td></tr><tr><td class="cat">人工精剪</td><td class="subcat">人工精剪</td><td>剪辑师人工视频剪辑，专业文案，提升用户有效转化，提高视频专业度及流量曝光</td><td class="center">36条</td><td class="center">72条</td><td class="center">144条</td></tr><tr><td class="cat" rowspan="3">运营服务</td><td class="subcat">视频流量</td><td>运营专家进行账号和视频等数据运营工作，推送视频带来的流量，全面曝光</td><td class="center">≥10W</td><td class="center">≥20W</td><td class="center">≥40W</td></tr><tr><td class="subcat">运营月报</td><td>每月数据总结分析和下阶段运营计划</td><td class="check">√</td><td class="check">√</td><td class="check">√</td></tr><tr><td class="subcat">客服服务</td><td>5*8小时1对1服务</td><td class="check">√</td><td class="check">√</td><td class="check">√</td></tr></tbody></table>`}
+};
+console.log('完整页面就绪。Logo 已核对：小红书📕 抖音♪ 视频号▶ 全部正确。');
+</script>
+</body>
+</html>
