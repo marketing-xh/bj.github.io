@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>全平台运营 & 建站服务套餐 | 完整版 · </title>
+  <title>全平台运营 & 建站服务套餐 | 完整版 · GitHub Ready</title>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root{--bg:#0b0f19;--card:#111827;--card-hover:#1a2332;--border:#1f2937;--text:#f3f4f6;--muted:#9ca3af;--accent:#3b82f6;--success:#10b981}
@@ -68,10 +68,13 @@
 <body>
 <header class="hero">
   <h1>全平台运营 & 建站服务套餐</h1>
-  <p>社交媒体 · 小红书 · 抖音 · 视频号 · 独立站 · SEO · 社群 · 地图<br>内容原样呈现 · 每个模块可单独下载独立 </p>
+  <p>社交媒体 · 小红书 · 抖音 · 视频号 · 独立站 · SEO · 社群 · 地图<br>内容原样呈现 · 每个模块可单独下载独立 HTML · 适合 GitHub Pages</p>
   <div class="badge-row">
     <span class="badge">21+ 完整套餐</span>
     <span class="badge">数据不可修改</span>
+    <span class="badge">一键下载独立 HTML</span>
+    <span class="badge">Logo 已核对正确</span>
+    <span class="badge">GitHub Ready</span>
   </div>
 </header>
 <div class="nav-wrap">
@@ -328,18 +331,59 @@ function downloadPackage(id){
   const title = packageTitles[id] || id;
   // Excel files for the 3 Chinese platforms
   const xlsxMap = {
-    xhs: 'packages/xlsx/小红书运营服务.xlsx',
-    douyin: 'packages/xlsx/抖音运营服务.xlsx',
-    shipinhao: 'packages/xlsx/视频号运营.xlsx'
-  };
+    xhs: 'packages/xlsx/xiaohongshu.xlsx',
+    douyin: 'packages/xlsx/douyin.xlsx',
+    shipinhao: 'packages/xlsx/shipinhao.xlsx',
+    tiktok: 'packages/xlsx/tiktok.xlsx',
+    facebook: 'packages/xlsx/facebook.xlsx',
+    x: 'packages/xlsx/x-twitter.xlsx',
+    youtube: 'packages/xlsx/youtube.xlsx',
+    linkedin: 'packages/xlsx/linkedin.xlsx',
+    reddit: 'packages/xlsx/reddit.xlsx',
+    instagram: 'packages/xlsx/instagram.xlsx',
+    shopify: 'packages/xlsx/shopify.xlsx',
+    shopyy: 'packages/xlsx/shopyy.xlsx',
+    wordpress: 'packages/xlsx/wordpress.xlsx',
+    'google-seo': 'packages/xlsx/google-seo.xlsx',
+    'google-map': 'packages/xlsx/google-map.xlsx',
+    threads: 'packages/xlsx/threads.xlsx',
+    pinterest: 'packages/xlsx/pinterest.xlsx',
+    lemon8: 'packages/xlsx/lemon8.xlsx',
+    'fb-group': 'packages/xlsx/fb-group.xlsx',
+    vk: 'packages/xlsx/vk.xlsx',
+    discord: 'packages/xlsx/discord.xlsx'
+  };;
   if (xlsxMap[id]) {
-    const a = document.createElement('a');
-    a.href = xlsxMap[id];
-    a.download = title + '.xlsx';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    showToast('✓ ' + title + ' 表格已下载 (Excel)');
+    const filePath = xlsxMap[id];
+    // 使用 fetch + blob 方式，兼容 GitHub Pages 和本地
+    fetch(filePath)
+      .then(res => {
+        if (!res.ok) throw new Error('文件不存在: ' + filePath);
+        return res.blob();
+      })
+      .then(blob => {
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = title + '.xlsx';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+        showToast('✓ ' + title + ' 表格已下载 (Excel)');
+      })
+      .catch(err => {
+        console.error(err);
+        // 兜底：直接跳转下载
+        const a = document.createElement('a');
+        a.href = filePath;
+        a.download = title + '.xlsx';
+        a.target = '_blank';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        showToast('正在尝试下载，如失败请右键另存为');
+      });
     return;
   }
   // Fallback for others: still allow HTML table download if data exists
