@@ -3,77 +3,249 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>全平台运营 & 建站服务套餐 | 完整版 · GitHub Ready</title>
+  <title>全平台运营与建站服务套餐</title>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    :root{--bg:#0b0f19;--card:#111827;--card-hover:#1a2332;--border:#1f2937;--text:#f3f4f6;--muted:#9ca3af;--accent:#3b82f6;--success:#10b981}
+    :root{
+      --bg:#f8f7fc;
+      --surface:rgba(255,255,255,.82);
+      --card:#ffffff;
+      --card-hover:#ffffff;
+      --border:rgba(92,76,164,.14);
+      --text:#202033;
+      --muted:#74758a;
+      --accent:#6c5ce7;
+      --accent-2:#ff6b9a;
+      --accent-3:#32c6d4;
+      --success:#12a879;
+      --danger:#ef476f;
+      --warning:#ff8a3d;
+      --shadow:0 18px 50px rgba(80,66,145,.10);
+      --shadow-hover:0 24px 65px rgba(80,66,145,.18);
+    }
     *{box-sizing:border-box;margin:0;padding:0}
-    body{font-family:'Noto Sans SC',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
-    .hero{background:linear-gradient(160deg,#0b0f19 0%,#111827 40%,#1e293b 100%);padding:3rem 1.5rem 2rem;text-align:center;border-bottom:1px solid var(--border);position:relative;overflow:hidden}
-    .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 50% at 50% -20%,rgba(59,130,246,.22),transparent)}
-    .hero h1{font-size:clamp(1.7rem,4.5vw,2.5rem);font-weight:700;letter-spacing:-.03em;position:relative;margin-bottom:.5rem}
-    .hero p{color:var(--muted);font-size:1rem;max-width:700px;margin:0 auto 1.2rem;position:relative}
-    .badge-row{display:flex;flex-wrap:wrap;gap:.45rem;justify-content:center;position:relative}
-    .badge{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);padding:.3rem .85rem;border-radius:999px;font-size:.78rem;color:var(--muted)}
-    .nav-wrap{position:sticky;top:0;z-index:50;background:rgba(11,15,25,.93);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
-    .nav{max-width:1400px;margin:0 auto;display:flex;gap:.2rem;padding:.55rem 1rem;overflow-x:auto;scrollbar-width:none}
+    html{scroll-behavior:smooth}
+    body{
+      min-height:100vh;
+      font-family:'Noto Sans SC',system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+      color:var(--text);
+      line-height:1.6;
+      -webkit-font-smoothing:antialiased;
+      background:
+        radial-gradient(circle at 8% 5%,rgba(255,107,154,.13),transparent 24rem),
+        radial-gradient(circle at 92% 8%,rgba(50,198,212,.15),transparent 25rem),
+        linear-gradient(180deg,#fbfaff 0%,#f7f6fb 42%,#fbfbfe 100%);
+    }
+    button,a,input{font:inherit}
+    button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid rgba(108,92,231,.22);outline-offset:2px}
+    .hero{
+      position:relative;
+      overflow:hidden;
+      padding:4.5rem 1.5rem 3.2rem;
+      text-align:center;
+      border-bottom:1px solid var(--border);
+      background:linear-gradient(135deg,rgba(255,255,255,.92),rgba(249,246,255,.88));
+    }
+    .hero::before,.hero::after{
+      content:'';
+      position:absolute;
+      border-radius:999px;
+      filter:blur(2px);
+      pointer-events:none;
+    }
+    .hero::before{
+      width:420px;height:420px;left:-170px;top:-250px;
+      background:linear-gradient(135deg,rgba(255,107,154,.20),rgba(255,190,120,.12));
+    }
+    .hero::after{
+      width:460px;height:460px;right:-190px;top:-280px;
+      background:linear-gradient(135deg,rgba(108,92,231,.18),rgba(50,198,212,.18));
+    }
+    .hero h1{
+      position:relative;
+      z-index:1;
+      max-width:900px;
+      margin:0 auto .8rem;
+      font-size:clamp(2rem,5vw,3.55rem);
+      font-weight:800;
+      line-height:1.15;
+      letter-spacing:-.055em;
+      background:linear-gradient(100deg,#29243d 3%,#6c5ce7 48%,#ef5d8d 92%);
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+    }
+    .hero p{
+      position:relative;
+      z-index:1;
+      max-width:790px;
+      margin:0 auto 1.5rem;
+      color:var(--muted);
+      font-size:1rem;
+    }
+    .badge-row{position:relative;z-index:1;display:flex;flex-wrap:wrap;justify-content:center;gap:.55rem}
+    .badge{
+      padding:.42rem .9rem;
+      border:1px solid rgba(108,92,231,.13);
+      border-radius:999px;
+      color:#625d78;
+      background:rgba(255,255,255,.72);
+      box-shadow:0 8px 24px rgba(108,92,231,.07);
+      backdrop-filter:blur(12px);
+      font-size:.78rem;
+      font-weight:600;
+    }
+    .nav-wrap{
+      position:sticky;top:0;z-index:50;
+      border-bottom:1px solid var(--border);
+      background:rgba(255,255,255,.78);
+      backdrop-filter:blur(18px) saturate(140%);
+      box-shadow:0 7px 24px rgba(80,66,145,.05);
+    }
+    .nav{max-width:1400px;margin:0 auto;display:flex;gap:.35rem;padding:.65rem 1rem;overflow-x:auto;scrollbar-width:none}
     .nav::-webkit-scrollbar{display:none}
-    .nav a{flex-shrink:0;text-decoration:none;color:var(--muted);font-size:.82rem;font-weight:500;padding:.4rem .85rem;border-radius:8px;transition:all .15s;white-space:nowrap;cursor:pointer}
-    .nav a:hover,.nav a.active{background:var(--accent);color:#fff}
-    main{max-width:1400px;margin:0 auto;padding:1.8rem 1rem 4rem}
-    .section-title{font-size:1rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin:2.2rem 0 1rem;padding-left:.5rem;border-left:3px solid var(--accent)}
-    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:1.1rem}
-    .card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.25rem;transition:all .2s;display:flex;flex-direction:column;gap:.75rem}
-    .card:hover{background:var(--card-hover);border-color:#374151;transform:translateY(-3px);box-shadow:0 12px 28px rgba(0,0,0,.28)}
-    .card-icon{width:42px;height:42px;border-radius:11px;display:grid;place-items:center;font-size:1.25rem;font-weight:700;color:#fff;flex-shrink:0}
-    .card h3{font-size:1.08rem;font-weight:600;line-height:1.3}
-    .card .desc{font-size:.82rem;color:var(--muted);flex:1}
-    .card .price{font-size:.88rem;font-weight:500;color:#fbbf24}
-    .card-actions{display:flex;gap:.45rem;margin-top:.2rem}
-    .btn{display:inline-flex;align-items:center;justify-content:center;gap:.3rem;padding:.5rem .9rem;border-radius:8px;font-size:.82rem;font-weight:500;border:none;cursor:pointer;font-family:inherit;transition:all .15s;text-decoration:none}
-    .btn-primary{background:var(--accent);color:#fff;flex:1}
-    .btn-primary:hover{background:#2563eb}
-    .btn-download{background:rgba(16,185,129,.14);color:var(--success);border:1px solid rgba(16,185,129,.28)}
-    .btn-download:hover{background:rgba(16,185,129,.24)}
+    .nav a{
+      flex-shrink:0;
+      padding:.48rem .92rem;
+      border-radius:999px;
+      color:#6f6a80;
+      text-decoration:none;
+      white-space:nowrap;
+      cursor:pointer;
+      font-size:.82rem;
+      font-weight:600;
+      transition:transform .18s ease,background .18s ease,color .18s ease,box-shadow .18s ease;
+    }
+    .nav a:hover{color:var(--accent);background:#f1edff;transform:translateY(-1px)}
+    .nav a.active{color:#fff;background:linear-gradient(110deg,var(--accent),#8d72ef);box-shadow:0 8px 22px rgba(108,92,231,.25)}
+    main{max-width:1400px;margin:0 auto;padding:2.15rem 1rem 4.5rem}
+    .search-wrap{position:relative;max-width:650px;margin:0 auto 2.2rem}
+    .search-input{
+      width:100%;
+      padding:.95rem 1.2rem .95rem 3rem;
+      border:1px solid var(--border);
+      border-radius:16px;
+      background:rgba(255,255,255,.88);
+      color:var(--text);
+      box-shadow:0 13px 35px rgba(80,66,145,.08);
+      outline:none;
+      transition:border .2s,box-shadow .2s,transform .2s;
+    }
+    .search-input::placeholder{color:#a3a0af}
+    .search-input:focus{border-color:rgba(108,92,231,.45);box-shadow:0 15px 40px rgba(108,92,231,.14);transform:translateY(-1px)}
+    .search-icon{position:absolute;left:1.1rem;top:50%;width:18px;height:18px;transform:translateY(-50%);color:#918aa8;pointer-events:none}
+    .section-title{
+      display:flex;align-items:center;gap:.75rem;
+      margin:2.7rem 0 1.15rem;
+      color:#343047;
+      font-size:1.06rem;
+      font-weight:800;
+      letter-spacing:.02em;
+    }
+    .section-title::before{content:'';width:10px;height:28px;border-radius:999px;background:linear-gradient(180deg,var(--accent),var(--accent-2));box-shadow:0 8px 18px rgba(108,92,231,.22)}
+    .section-title::after{content:'';height:1px;flex:1;background:linear-gradient(90deg,rgba(108,92,231,.18),transparent)}
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(275px,1fr));gap:1.15rem}
+    .card{
+      position:relative;
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+      gap:.78rem;
+      min-height:245px;
+      padding:1.35rem;
+      border:1px solid var(--border);
+      border-radius:20px;
+      background:rgba(255,255,255,.88);
+      box-shadow:var(--shadow);
+      transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease;
+    }
+    .card::before{
+      content:'';
+      position:absolute;
+      left:0;right:0;top:0;height:4px;
+      background:linear-gradient(90deg,var(--accent),var(--accent-2),var(--accent-3));
+      opacity:.78;
+    }
+    .card::after{
+      content:'';
+      position:absolute;
+      width:130px;height:130px;right:-75px;top:-70px;
+      border-radius:50%;
+      background:radial-gradient(circle,rgba(108,92,231,.11),transparent 68%);
+      pointer-events:none;
+    }
+    .card:hover{transform:translateY(-6px);border-color:rgba(108,92,231,.28);box-shadow:var(--shadow-hover)}
+    .card-icon{position:relative;z-index:1;width:46px;height:46px;border-radius:14px;display:grid;place-items:center;flex-shrink:0;color:#fff;font-size:1.28rem;font-weight:800;box-shadow:0 10px 25px rgba(56,47,105,.16)}
+    .card h3{position:relative;z-index:1;color:#29263a;font-size:1.1rem;font-weight:750;line-height:1.35}
+    .card .desc{position:relative;z-index:1;flex:1;color:var(--muted);font-size:.84rem}
+    .card .price{position:relative;z-index:1;color:#ef5d8d;font-size:.9rem;font-weight:800}
+    .card-actions{position:relative;z-index:1;display:flex;gap:.55rem;margin-top:.15rem}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:.35rem;
+      min-height:38px;
+      padding:.54rem .92rem;
+      border:0;border-radius:11px;
+      cursor:pointer;text-decoration:none;
+      font-size:.82rem;font-weight:700;
+      transition:transform .17s ease,box-shadow .17s ease,filter .17s ease,background .17s ease;
+    }
+    .btn:hover{transform:translateY(-1px)}
+    .btn-primary{flex:1;color:#fff;background:linear-gradient(110deg,var(--accent),#8d72ef);box-shadow:0 9px 22px rgba(108,92,231,.23)}
+    .btn-primary:hover{filter:saturate(112%);box-shadow:0 12px 28px rgba(108,92,231,.32)}
+    .btn-download{color:#087e65;border:1px solid rgba(18,168,121,.18);background:#eafaf4}
+    .btn-download:hover{background:#dcf7ec;box-shadow:0 9px 20px rgba(18,168,121,.12)}
     .btn svg{width:14px;height:14px}
-    .detail-view{display:none;scroll-margin-top:60px}
+    .detail-view{display:none;scroll-margin-top:74px}
     .detail-view.active{display:block}
     .back-bar{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.8rem;margin-bottom:1.3rem}
-    .back-btn{background:var(--card);color:var(--text);border:1px solid var(--border);padding:.45rem 1rem;border-radius:8px;cursor:pointer;font-family:inherit;font-size:.88rem;display:inline-flex;align-items:center;gap:.35rem}
-    .back-btn:hover{background:var(--card-hover)}
-    .detail-view h2{font-size:1.5rem;font-weight:700;margin-bottom:1rem;display:flex;align-items:center;gap:.55rem}
-    .table-card{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden}
+    .back-btn{display:inline-flex;align-items:center;gap:.4rem;padding:.58rem 1rem;border:1px solid var(--border);border-radius:11px;background:rgba(255,255,255,.9);color:#4f4964;cursor:pointer;font-size:.86rem;font-weight:700;box-shadow:0 8px 22px rgba(80,66,145,.06)}
+    .back-btn:hover{color:var(--accent);border-color:rgba(108,92,231,.25);background:#f6f2ff}
+    .detail-view h2{display:flex;align-items:center;gap:.55rem;margin-bottom:1.1rem;color:#29263a;font-size:clamp(1.35rem,3vw,1.8rem);font-weight:800}
+    .table-card{overflow:hidden;border:1px solid var(--border);border-radius:20px;background:#fff;box-shadow:var(--shadow)}
     .table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
-    table{width:100%;border-collapse:collapse;font-size:.78rem;min-width:780px}
-    th,td{padding:.6rem .75rem;text-align:left;border:1px solid var(--border);vertical-align:top}
-    thead th{background:#1e293b;color:#f8fafc;font-weight:600;font-size:.75rem;text-align:center;white-space:nowrap}
-    thead th.price-h{background:#0f172a;color:#fbbf24}
-    tbody tr:nth-child(even){background:rgba(255,255,255,.02)}
-    tbody tr:hover{background:rgba(255,255,255,.04)}
+    table{width:100%;min-width:780px;border-collapse:separate;border-spacing:0;background:#fff;font-size:.78rem}
+    th,td{padding:.68rem .78rem;text-align:left;vertical-align:top;border-right:1px solid #ece9f4;border-bottom:1px solid #ece9f4}
+    tr>*:last-child{border-right:0}
+    tbody tr:last-child td{border-bottom:0}
+    thead th{position:sticky;top:0;z-index:2;background:#f0ecff;color:#3e3659;text-align:center;white-space:nowrap;font-size:.75rem;font-weight:800}
+    thead th.price-h,thead th.price{background:linear-gradient(135deg,#6c5ce7,#8f75ef);color:#fff}
+    tbody tr:nth-child(even){background:#fcfbff}
+    tbody tr:hover{background:#f8f5ff}
     td.center{text-align:center}
-    td.check{text-align:center;color:var(--success);font-weight:700}
-    td.cross{text-align:center;color:#ef4444;font-weight:700}
-    .cat{background:rgba(59,130,246,.1)!important;font-weight:600;color:#93c5fd;white-space:nowrap}
-    .subcat{background:rgba(255,255,255,.03)!important;font-weight:500;color:#cbd5e1;white-space:nowrap}
-    .note{font-size:.72rem;color:var(--muted)}
-    .price-cell{font-weight:700;color:#fbbf24;text-align:center;background:rgba(251,191,36,.08)!important}
-    .dl-bar{display:flex;flex-wrap:wrap;gap:.55rem;padding:.9rem 1.1rem;background:rgba(0,0,0,.22);border-top:1px solid var(--border);align-items:center}
-    .dl-bar .label{font-size:.82rem;color:var(--muted)}
-    .toast{position:fixed;bottom:1.8rem;left:50%;transform:translateX(-50%) translateY(80px);background:#059669;color:#fff;padding:.8rem 1.4rem;border-radius:11px;font-size:.92rem;font-weight:500;box-shadow:0 10px 36px rgba(0,0,0,.4);opacity:0;transition:all .3s cubic-bezier(.34,1.56,.64,1);z-index:999}
+    td.check{text-align:center;color:var(--success);font-weight:800}
+    td.cross{text-align:center;color:var(--danger);font-weight:800}
+    .cat{background:#eeeaff!important;color:#5d4db6;font-weight:800;white-space:nowrap}
+    .subcat{background:#fff4f8!important;color:#98516a;font-weight:700;white-space:nowrap}
+    .note{color:var(--muted);font-size:.72rem}
+    .price-cell{background:#fff3e8!important;color:#df6b21;text-align:center;font-weight:800}
+    .dl-bar{display:flex;flex-wrap:wrap;align-items:center;gap:.6rem;padding:1rem 1.15rem;border-top:1px solid #ece9f4;background:linear-gradient(90deg,#fbfaff,#fff8fb)}
+    .dl-bar .label{color:var(--muted);font-size:.82rem}
+    .toast{position:fixed;bottom:1.8rem;left:50%;z-index:999;max-width:min(90vw,520px);padding:.82rem 1.25rem;border-radius:13px;background:linear-gradient(110deg,#29263a,#4e466a);color:#fff;text-align:center;font-size:.9rem;font-weight:700;box-shadow:0 16px 42px rgba(41,38,58,.28);opacity:0;transform:translateX(-50%) translateY(85px);transition:all .3s cubic-bezier(.34,1.56,.64,1);pointer-events:none}
     .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
-    footer{text-align:center;padding:1.8rem 1rem;color:var(--muted);font-size:.82rem;border-top:1px solid var(--border)}
-    @media(max-width:640px){.hero{padding:2.2rem 1rem}.card-actions{flex-direction:column}table{font-size:.7rem}}
+    footer{padding:2rem 1rem;border-top:1px solid var(--border);background:rgba(255,255,255,.55);color:var(--muted);text-align:center;font-size:.82rem}
+    @media(max-width:760px){
+      .hero{padding:3.2rem 1rem 2.5rem}
+      .hero h1{font-size:2.15rem}
+      main{padding-top:1.55rem}
+      .grid{grid-template-columns:1fr}
+      .card{min-height:auto}
+      .card-actions{flex-direction:column}
+      .btn-download{width:100%}
+      table{font-size:.7rem}
+      th,td{padding:.55rem .62rem}
+    }
+    @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
   </style>
 </head>
 <body>
 <header class="hero">
   <h1>全平台运营 & 建站服务套餐</h1>
-  <p>社交媒体 · 小红书 · 抖音 · 视频号 · 独立站 · SEO · 社群 · 地图<br>内容原样呈现 · 每个模块可单独下载独立 HTML · 适合 GitHub Pages</p>
+  <p>社交媒体 · 小红书 · 抖音 · 视频号 · 独立站 · SEO · 社群 · 地图<br>覆盖内容运营、社群增长、独立站建设与搜索增长 · 适合 GitHub Pages</p>
   <div class="badge-row">
     <span class="badge">21+ 完整套餐</span>
-    <span class="badge">数据不可修改</span>
-    <span class="badge">一键下载独立 HTML</span>
-    <span class="badge">Logo 已核对正确</span>
+    <span class="badge">清晰套餐对比</span>
+    <span class="badge">一键下载 Excel</span>
+    <span class="badge">移动端适配</span>
     <span class="badge">GitHub Ready</span>
   </div>
 </header>
@@ -89,11 +261,9 @@
 </div>
 <main>
   <div id="homeView">
-    <div style="max-width:600px;margin:0 auto 2rem;position:relative;">
-      <input type="text" id="searchInput" placeholder="搜索套餐名称，例如：小红书、抖音、TikTok、Shopify..." 
-        style="width:100%;padding:0.85rem 1.2rem 0.85rem 2.8rem;border-radius:12px;border:1px solid var(--border);background:var(--card);color:var(--text);font-size:0.95rem;font-family:inherit;outline:none;transition:border 0.2s;"
-        onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--border)'">
-      <svg style="position:absolute;left:1rem;top:50%;transform:translateY(-50%);width:18px;height:18px;color:var(--muted);" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+    <div class="search-wrap">
+      <input class="search-input" type="search" id="searchInput" autocomplete="off" placeholder="搜索套餐名称，例如：小红书、TikTok、Shopify...">
+      <svg class="search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
     </div>
 
     <div class="section-title" id="cn-social">国内平台运营</div>
@@ -167,8 +337,8 @@
   <div id="detailView" class="detail-view"></div>
 </main>
 <footer>
-  <p>内容原样呈现 · 数据不可修改 · Logo 已核对正确 · 每个模块可单独下载为独立 HTML<br>
-  适合直接上传 GitHub 仓库 / GitHub Pages · 纯前端无后端</p>
+  <p>套餐内容清晰呈现 · 支持详情浏览与 Excel 下载<br>
+  可直接上传 GitHub 仓库并通过 GitHub Pages 发布 · 纯前端无后端</p>
 </footer>
 <div class="toast" id="toast">✓ 下载已开始</div>
 <script>
@@ -275,6 +445,7 @@ function showDetail(id){
   const title = packageTitles[id] || id;
   document.getElementById('homeView').style.display = 'none';
   const view = document.getElementById('detailView');
+  view.style.removeProperty('display');
   view.classList.add('active');
   
   if (!data) {
@@ -292,22 +463,22 @@ function showDetail(id){
           点击下方按钮即可查看全部内容（支持滚动浏览所有套餐）。
         </p>
         <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
-          <a href="social_media_packages.html" class="btn btn-primary" style="text-decoration:none; padding:0.8rem 1.8rem; font-size:1rem;">
-            打开完整表格页面
-          </a>
+          <button class="btn btn-primary" onclick="showHome()" style="padding:0.8rem 1.8rem; font-size:1rem;">
+            返回套餐首页
+          </button>
           <button class="btn btn-download" onclick="showHome()" style="padding:0.8rem 1.5rem;">
             返回首页
           </button>
         </div>
         <p style="margin-top:2rem; font-size:0.85rem; color:var(--muted);">
-          提示：完整表格页面包含 TikTok、Facebook、X、YouTube、领英、Reddit、Instagram 等全部海外套餐
+          提示：请返回首页重新选择需要查看的套餐
         </p>
       </div>`;
     window.scrollTo({top:0, behavior:'smooth'});
     return;
   }
   
-  // 有完整数据的套餐（小红书、抖音、视频号）
+  // 渲染当前套餐的完整数据表格
   view.innerHTML = `
     <div class="back-bar">
       <button class="back-btn" onclick="showHome()">← 返回全部套餐</button>
@@ -327,82 +498,65 @@ function showDetail(id){
   window.scrollTo({top:0, behavior:'smooth'});
 }
 
+let toastTimer;
+function showToast(message){
+  const toast = document.getElementById('toast');
+  if (!toast) return;
+  toast.textContent = message;
+  toast.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => toast.classList.remove('show'), 2400);
+}
+
 function downloadPackage(id){
-  const title = packageTitles[id] || id;
-  // Excel files for the 3 Chinese platforms
-  const xlsxMap = {
-    xhs: 'packages/xlsx/xiaohongshu.xlsx',
-    douyin: 'packages/xlsx/douyin.xlsx',
-    shipinhao: 'packages/xlsx/shipinhao.xlsx',
-    tiktok: 'packages/xlsx/tiktok.xlsx',
-    facebook: 'packages/xlsx/facebook.xlsx',
-    x: 'packages/xlsx/x-twitter.xlsx',
-    youtube: 'packages/xlsx/youtube.xlsx',
-    linkedin: 'packages/xlsx/linkedin.xlsx',
-    reddit: 'packages/xlsx/reddit.xlsx',
-    instagram: 'packages/xlsx/instagram.xlsx',
-    shopify: 'packages/xlsx/shopify.xlsx',
-    shopyy: 'packages/xlsx/shopyy.xlsx',
-    wordpress: 'packages/xlsx/wordpress.xlsx',
-    'google-seo': 'packages/xlsx/google-seo.xlsx',
-    'google-map': 'packages/xlsx/google-map.xlsx',
-    threads: 'packages/xlsx/threads.xlsx',
-    pinterest: 'packages/xlsx/pinterest.xlsx',
-    lemon8: 'packages/xlsx/lemon8.xlsx',
-    'fb-group': 'packages/xlsx/fb-group.xlsx',
-    vk: 'packages/xlsx/vk.xlsx',
-    discord: 'packages/xlsx/discord.xlsx'
-  };;
-  if (xlsxMap[id]) {
-    const filePath = xlsxMap[id];
-    // 使用 fetch + blob 方式，兼容 GitHub Pages 和本地
-    fetch(filePath)
-      .then(res => {
-        if (!res.ok) throw new Error('文件不存在: ' + filePath);
-        return res.blob();
-      })
-      .then(blob => {
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = title + '.xlsx';
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
-        showToast('✓ ' + title + ' 表格已下载 (Excel)');
-      })
-      .catch(err => {
-        console.error(err);
-        // 兜底：直接跳转下载
-        const a = document.createElement('a');
-        a.href = filePath;
-        a.download = title + '.xlsx';
-        a.target = '_blank';
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        showToast('正在尝试下载，如失败请右键另存为');
-      });
-    return;
-  }
-  // Fallback for others: still allow HTML table download if data exists
   const data = packageData[id];
-  if (!data) {
-    showToast('该套餐完整表格请查看 social_media_packages.html');
+  const title = packageTitles[id] || (data && data.title) || id;
+
+  if (!data || !data.table) {
+    showToast('暂无可下载的套餐表格');
     return;
   }
-  // Generate clean Markdown table for download as .md (or keep simple)
+
+  // 直接把页面中的套餐表格导出为 Excel 可打开的 .xls 文件。
+  // 无需额外 packages/xlsx 文件夹，本地打开或部署到 GitHub Pages 都可使用。
+  const excelHtml = `<!DOCTYPE html>
+  <html xmlns:o="urn:schemas-microsoft-com:office:office"
+        xmlns:x="urn:schemas-microsoft-com:office:excel"
+        xmlns="http://www.w3.org/TR/REC-html40">
+  <head>
+    <meta charset="UTF-8">
+    <style>
+      body{font-family:Arial,"Microsoft YaHei",sans-serif;color:#202033}
+      h2{margin:0 0 16px;color:#5d4db6}
+      table{border-collapse:collapse;width:100%}
+      th,td{border:1px solid #cfc9df;padding:7px 9px;vertical-align:top;font-size:12px}
+      th{background:#6c5ce7;color:#fff;font-weight:bold;text-align:center}
+      .cat{background:#eeeaff;color:#5d4db6;font-weight:bold}
+      .subcat{background:#fff4f8;color:#98516a;font-weight:bold}
+      .center,.check,.cross,.note{text-align:center}
+      .check{color:#12805f;font-weight:bold}
+      .cross{color:#d93c66;font-weight:bold}
+    </style>
+  </head>
+  <body>
+    <h2>${data.title || title}</h2>
+    ${data.table}
+  </body>
+  </html>`;
+
+  const blob = new Blob(['\ufeff', excelHtml], {
+    type: 'application/vnd.ms-excel;charset=utf-8;'
+  });
+  const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
-  a.href = 'social_media_packages.html';
-  a.download = title + '.html';
-  a.target = '_blank';
+  a.href = url;
+  a.download = title.replace(/[\\/:*?"<>|]/g, '_') + '.xls';
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);
-  showToast('✓ 请从完整页面中查看/保存该套餐');
+  setTimeout(() => URL.revokeObjectURL(url), 0);
+  showToast('✓ ' + title + ' 表格已下载');
 }
-
 
 // Search filter
 document.addEventListener('DOMContentLoaded', function() {
@@ -424,7 +578,25 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
-console.log('完整页面就绪。Logo 已核对：小红书📕 抖音♪ 视频号▶ 全部正确。');
+function showHome() {
+  document.getElementById('homeView').style.display = 'block';
+  const detail = document.getElementById('detailView');
+  detail.classList.remove('active');
+  detail.style.removeProperty('display');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function scrollToSec(sectionId) {
+  showHome(); // 先回到主页
+  setTimeout(() => {
+    const el = document.getElementById(sectionId);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }, 50);
+}
+
+console.log('页面已就绪：详情切换、搜索与下载功能已加载。');
 
 
 
